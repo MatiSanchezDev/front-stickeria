@@ -1,5 +1,6 @@
 export interface Sticker {
   id?: number | string;
+  created_at: string;
   name: string;
   price: string | number;
 }

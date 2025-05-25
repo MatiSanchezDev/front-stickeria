@@ -1,10 +1,10 @@
-import { Sticker, StickerId } from "@/app/interface/sticker.interface";
-import { Token } from "@/app/interface/token.interfase";
+import { Order, OrderId } from "@/interface/order.interface";
+import { Token } from "@/interface/token.interfase";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
-export async function getStickers(token: Token) {
-  const res = await fetch(`${API_BASE}/item`, {
+export async function getOrders(token: Token) {
+  const res = await fetch(`${API_BASE}/order`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -15,8 +15,8 @@ export async function getStickers(token: Token) {
   return res.json();
 }
 
-export async function getSticker(id: StickerId, token: Token) {
-  const res = await fetch(`${API_BASE}/item/${id}`, {
+export async function getOrder(id: OrderId, token: Token) {
+  const res = await fetch(`${API_BASE}/order/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -27,8 +27,8 @@ export async function getSticker(id: StickerId, token: Token) {
   return res.json();
 }
 
-export async function createSticker(sticker: Sticker, token: Token) {
-  const res = await fetch(`${API_BASE}/item`, {
+export async function createOrder(sticker: Order, token: Token) {
+  const res = await fetch(`${API_BASE}/order`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,12 +40,8 @@ export async function createSticker(sticker: Sticker, token: Token) {
   return res.json();
 }
 
-export async function editSticker(
-  id: StickerId,
-  payload: Sticker,
-  token: Token
-) {
-  const res = await fetch(`${API_BASE}/item/${id}`, {
+export async function editOrder(id: OrderId, payload: Order, token: Token) {
+  const res = await fetch(`${API_BASE}/order/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -57,8 +53,8 @@ export async function editSticker(
   return res.json();
 }
 
-export async function deleteSticker(id: StickerId, token: Token) {
-  const res = await fetch(`${API_BASE}/item/${id}`, {
+export async function deleteOrder(id: OrderId, token: Token) {
+  const res = await fetch(`${API_BASE}/order/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

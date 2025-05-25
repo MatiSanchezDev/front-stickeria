@@ -1,4 +1,4 @@
-import { Auth } from "@/app/interface/auth.interfase";
+import { Auth } from "@/interface/auth.interfase";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
