@@ -15,7 +15,7 @@ export async function getStickers(token: Token) {
       Authorization: `Bearer ${token}`,
     },
   });
-  if (!res.ok) throw new Error("Error al Logearse.");
+  if (!res.ok) return [];
   return res.json();
 }
 

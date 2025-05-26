@@ -1,18 +1,20 @@
 "use client";
 
 import {
+  Sticker,
   StickerArray,
   StickerWithCreatedAt,
 } from "@/interface/sticker.interface";
 import { DeleteSticker } from "./DeleteSticker";
 import { PackageCheck } from "lucide-react";
 import { useOrderStore } from "@/store/slices/orderSlice";
+import { toast } from "react-toastify";
 
 interface Props {
   stickers: StickerArray;
 }
-export const StickerCard = ({ stickers }: Props) => {
-  const { addToOrder, items } = useOrderStore();
+export const StickerCard = ({ stickers = [] }: Props) => {
+  const { addToOrder } = useOrderStore();
   const formatToBuenosAiresTime = (utcDateString: string) => {
     return new Date(utcDateString).toLocaleString("es-AR", {
       timeZone: "America/Argentina/Buenos_Aires",
@@ -21,7 +23,12 @@ export const StickerCard = ({ stickers }: Props) => {
     });
   };
 
-  console.log(items);
+  const handleAddSticker = (sticker: Sticker) => {
+    addToOrder(sticker, 1);
+    toast.success(`Sticker ${sticker.name} agregado.`);
+  };
+
+  console.log(stickers);
   return (
     <>
       {stickers.map((sticker: StickerWithCreatedAt) => (
@@ -45,7 +52,8 @@ export const StickerCard = ({ stickers }: Props) => {
               />
             </div>
             <button
-              onClick={() => addToOrder(sticker, 1)}
+              title="Agregar pedido"
+              onClick={() => handleAddSticker(sticker)}
               className="w-1/4 bg-green-600 hover:bg-green-700 flex items-center justify-center cursor-pointer active:scale-105"
             >
               <PackageCheck strokeWidth={2.25} size={25} />

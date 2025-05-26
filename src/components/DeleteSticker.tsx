@@ -52,7 +52,7 @@ export const DeleteSticker = ({ id, name, price }: Props) => {
   return (
     <button
       onClick={() => handleDeleteSticker()}
-      title="Editar Sticker"
+      title="Eliminar Sticker"
       className="absolute left-1 bottom-0 p-1 hover:bg-red-500 rounded-full cursor-pointer"
     >
       <Trash2 size={18} />
