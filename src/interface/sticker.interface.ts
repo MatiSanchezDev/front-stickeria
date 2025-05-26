@@ -1,10 +1,18 @@
 export interface Sticker {
-  id?: number | string;
-  created_at: string;
+  id: number | string;
   name: string;
-  price: string | number;
+  price: number;
 }
 
-export type StickerArray = Sticker[];
+export interface StickerInput {
+  name: string;
+  price: number;
+}
+
+export interface StickerWithCreatedAt extends Sticker {
+  created_at: string;
+}
+
+export type StickerArray = StickerWithCreatedAt[];
 
 export type StickerId = string | number;

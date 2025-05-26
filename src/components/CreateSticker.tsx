@@ -1,11 +1,12 @@
 "use client";
 
-import { Sticker } from "@/interface/sticker.interface";
+import { StickerInput } from "@/interface/sticker.interface";
 import { createSticker } from "@/lib/api/sticker";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { CopyButton } from "./CopyButton";
 
 export const CreateSticker = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ export const CreateSticker = () => {
     const nameSticker = target.namee.value.trim();
     const priceSticker = Number(target.price.value.trim());
 
-    const data: Sticker = {
+    const data: StickerInput = {
       name: nameSticker,
       price: priceSticker,
     };
@@ -43,21 +44,23 @@ export const CreateSticker = () => {
 
   return (
     <div className="w-full flex justify-center items-center flex-col mb-8">
-      <button
-        onClick={() => setShowForm(!showForm)}
-        className={`${
-          !showForm
-            ? "from-blue-500 via-blue-600 to-blue-700 focus:ring-blue-800 shadow-blue-800/80"
-            : "from-red-500 via-red-600 to-red-700 focus:ring-red-800 mb-6 shadow-red-800/80"
-        } text-white bg-gradient-to-r hover:bg-gradient-to-br focus:ring-4 focus:outline-none  shadow-lg font-medium rounded-lg text-md px-5 mt-6 py-2 text-center font-mono cursor-pointer`}
-      >
-        {`${!showForm ? "Agregar Nuevo Sticker" : "Cerrar ventana"}`}
-      </button>
-
+      <div className="flex gap-3">
+        <button
+          onClick={() => setShowForm(!showForm)}
+          className={`${
+            !showForm
+              ? "from-blue-500 via-blue-600 to-blue-700 focus:ring-blue-800 shadow-blue-800/80 mb-6"
+              : "from-red-500 via-red-600 to-red-700 focus:ring-red-800 mb-6 shadow-red-800/80"
+          } text-white bg-gradient-to-r hover:bg-gradient-to-br focus:ring-4 focus:outline-none  shadow-lg font-medium rounded-lg text-md px-5 mt-6 py-2 text-center font-mono cursor-pointer`}
+        >
+          {`${!showForm ? "Agregar Nuevo Sticker" : "Cerrar ventana"}`}
+        </button>
+        <CopyButton />
+      </div>
       {showForm && (
         <form
           onSubmit={onSubmitForm}
-          className="flex justify-center items-center flex-col w-1/3  border-2 p-6 rounded-2xl bg-gray-800"
+          className="flex justify-center items-center flex-col w-1/3  border-2 p-6 rounded-2xl bg-gray-800 "
         >
           <h2 className="font-mono text-2xl text-center mb-4">
             Agregar nuevo Sticker

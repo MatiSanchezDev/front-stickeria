@@ -1,4 +1,8 @@
-import { Sticker, StickerId } from "@/interface/sticker.interface";
+import {
+  Sticker,
+  StickerId,
+  StickerInput,
+} from "@/interface/sticker.interface";
 import { Token } from "@/interface/token.interfase";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
@@ -27,7 +31,7 @@ export async function getSticker(id: StickerId, token: Token) {
   return res.json();
 }
 
-export async function createSticker(sticker: Sticker, token: Token) {
+export async function createSticker(sticker: StickerInput, token: Token) {
   const res = await fetch(`${API_BASE}/item`, {
     method: "POST",
     headers: {
