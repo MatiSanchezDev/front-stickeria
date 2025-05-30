@@ -30,12 +30,6 @@ export const DeleteSticker = ({ id, name, price }: Props) => {
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Sticker Eliminado",
-          theme: "dark",
-          text: `Usted elimino el ${name} | $${price}`,
-          icon: "success",
-        });
         try {
           const delSticker = await deleteSticker(id, token);
           if (delSticker.success) {

@@ -8,7 +8,6 @@ import {
 import { DeleteSticker } from "./DeleteSticker";
 import { PackageCheck } from "lucide-react";
 import { useOrderStore } from "@/store/slices/orderSlice";
-import { toast } from "react-toastify";
 
 interface Props {
   stickers: StickerArray;
@@ -26,7 +25,6 @@ export const StickerCard = ({ stickers = [] }: Props) => {
 
   const handleAddSticker = (sticker: Sticker) => {
     addToOrder(sticker, 1);
-    toast.success(`Sticker ${sticker.name} agregado.`);
   };
 
   return (
@@ -43,9 +41,7 @@ export const StickerCard = ({ stickers = [] }: Props) => {
           </div>
           <div className="flex w-full overflow-hidden">
             <div className=" flex justify-center items-center flex-col font-bold my-2 w-full">
-              <h3 className="text-md font-mono text-white tracking-widest">
-                {sticker.name}
-              </h3>
+              <h3 className="text-xl font-mono text-white ">{sticker.name}</h3>
               <p className="mt-2 text-white text-xl font-mono">
                 $ {sticker.price}
               </p>
@@ -60,7 +56,7 @@ export const StickerCard = ({ stickers = [] }: Props) => {
             <button
               title="Agregar pedido"
               onClick={() => handleAddSticker(sticker)}
-              className="w-full bg-green-600 hover:bg-green-700 flex items-center justify-center cursor-pointer active:scale-105 py-2 font-mono gap-2"
+              className="text-lg w-full bg-green-600 hover:bg-green-700 flex items-center justify-center cursor-pointer active:scale-105 py-2 font-mono gap-2"
             >
               <PackageCheck strokeWidth={2.25} size={25} />
               Agregar

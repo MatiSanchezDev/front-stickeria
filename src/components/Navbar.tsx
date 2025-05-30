@@ -23,6 +23,7 @@ export default function Navbar() {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteCookie("tokenAccess");
+        router.refresh();
         router.push("/");
         toast.success("Ustéd cerró sesión con éxito. ¡Vuelva pronto!");
       }
@@ -90,7 +91,7 @@ export default function Navbar() {
                 Inicio
               </Link>
             </li>
-            <li>
+            {/*   <li>
               <Link
                 href="/my-orders"
                 className={`block py-2 px-3 rounded-sm md:bg-transparent md:p-0 ${
@@ -109,7 +110,7 @@ export default function Navbar() {
               >
                 Ganancias
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

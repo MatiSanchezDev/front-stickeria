@@ -32,6 +32,7 @@ export const CreateSticker = () => {
         toast.success(sticker.message);
         router.refresh();
         setBlockButton(false);
+        setShowForm(false);
       }
     } catch (error) {
       console.log("Entre al catch: ", error);

@@ -22,8 +22,9 @@ export const Checkboxs = ({ order, token }: Props) => {
       const data = {
         name: order.name,
         total_price: order.total_price,
-        delivered: !order.delivered,
         prepaid: order.prepaid,
+        delivered: !order.delivered,
+        message_client: order.message_client,
       };
       const changeCheckbox = await editOrder(Number(order.id), data, token);
       if (changeCheckbox.success) {
@@ -47,6 +48,7 @@ export const Checkboxs = ({ order, token }: Props) => {
         total_price: order.total_price,
         delivered: order.delivered,
         prepaid: !order.prepaid,
+        message_client: order.message_client,
       };
       const changeCheckbox = await editOrder(Number(order.id), data, token);
       if (changeCheckbox.success) {
@@ -63,7 +65,7 @@ export const Checkboxs = ({ order, token }: Props) => {
   };
   return (
     <>
-      <td className="px-6 py-4 text-center cursor-pointer">
+      <td className="px-6 py-4 text-center">
         {checkboxDisabled ? (
           <Loader />
         ) : (
@@ -71,11 +73,11 @@ export const Checkboxs = ({ order, token }: Props) => {
             type="checkbox"
             onChange={handleChangePrepaid}
             checked={order.prepaid}
-            className="accent-green-600"
+            className="accent-green-600 cursor-pointer w-4 h-4"
           />
         )}
       </td>
-      <td className="px-6 py-4 text-center cursor-pointer">
+      <td className="px-6 py-4 text-center">
         {checkboxDisabled ? (
           <Loader />
         ) : (
@@ -83,7 +85,7 @@ export const Checkboxs = ({ order, token }: Props) => {
             type="checkbox"
             onChange={handleChangeDelivered}
             checked={order.delivered}
-            className="accent-green-600"
+            className="accent-green-600 cursor-pointer w-4 h-4"
           />
         )}
       </td>

@@ -2,8 +2,8 @@ import { Order } from "@/interface/order.interface";
 import { getOrders } from "@/lib/api/order";
 import { cookies } from "next/headers";
 import { Checkboxs } from "./Checkboxs";
-import { ClipboardCopy } from "lucide-react";
 import { DeleteOrder } from "./DeleteOrder";
+import { CopyOrderButton } from "./CopyOrderButton";
 
 export const OrderListComponent = async () => {
   const cookieStore = await cookies();
@@ -91,14 +91,7 @@ export const OrderListComponent = async () => {
                   {formatToBuenosAiresTime(order.created_at)}
                 </td>
                 <Checkboxs order={order} token={token} />
-                <td className="px-6 py-4 capitalize">
-                  <div
-                    title="Copiar texto para enviar"
-                    className="flex justify-center items-center cursor-pointer hover:text-green-400"
-                  >
-                    <ClipboardCopy />
-                  </div>
-                </td>
+                <CopyOrderButton message={order.message_client} />
                 <DeleteOrder id={Number(order.id)} token={token} />
               </tr>
             ))}

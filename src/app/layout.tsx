@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Luckiest_Guy, Rowdies } from "next/font/google";
+import { Luckiest_Guy, Roboto } from "next/font/google";
 import "./globals.css";
 import { Flip, ToastContainer } from "react-toastify";
 import Head from "next/head";
@@ -10,9 +10,9 @@ const luckiestGuy = Luckiest_Guy({
   variable: "--font-luckiest_guy", // variable CSS opcional
 });
 
-const anton = Rowdies({
+const anton = Roboto({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["900"],
   variable: "--font-alfa", // variable CSS opcional
 });
 
@@ -39,17 +39,17 @@ export default function RootLayout({
       >
         {children}
         <ToastContainer
-          position="top-center"
+          position="top-left"
           limit={2}
           autoClose={1300}
-          hideProgressBar={false}
+          hideProgressBar={true}
           newestOnTop={true}
           closeOnClick={true}
           rtl={false}
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="dark"
+          theme="light"
           transition={Flip}
         />
       </body>

@@ -1,4 +1,5 @@
 import { OrderItem } from "@/store/slices/orderSlice";
+import { toast } from "react-toastify";
 
 export const copyOrderToClipboard = async (
   client: string,
@@ -18,7 +19,7 @@ TOTAL: $ ${total_price}
 𝗖𝗢𝗡𝗙𝗜𝗥𝗠𝗔𝗥 𝗣𝗘𝗗𝗜𝗗𝗢
 Para confirmar el pedido se debe paga por transferencia y enviar el comprobante.
   
-Numbre de la cuenta: Agustina Sanchez
+Nombre de la cuenta: Agustina Sanchez
 Alias: lastickeriacuruzu
 CVU: 0000003100050750666317
   `;
@@ -31,4 +32,13 @@ CVU: 0000003100050750666317
   }
 
   return text; // también lo podés guardar en tu base de datos
+};
+
+export const copyOrderToClipboardCreated = async (message: string) => {
+  try {
+    await navigator.clipboard.writeText(message);
+    toast("📝 Mensaje copiado");
+  } catch (error) {
+    console.error("Error al copiar:", error);
+  } // también lo podés guardar en tu base de datos
 };

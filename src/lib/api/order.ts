@@ -1,4 +1,4 @@
-import { Order, OrderId, OrderInput } from "@/interface/order.interface";
+import { OrderId, OrderInput } from "@/interface/order.interface";
 import { Token } from "@/interface/token.interfase";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE;

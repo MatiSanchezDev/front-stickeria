@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { OrderItems } from "./OrderItems";
 import { useOrderStore } from "@/store/slices/orderSlice";
-import { Package, PackageX } from "lucide-react";
+import { Package, Trash2 } from "lucide-react";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { createOrder } from "@/lib/api/order";
@@ -48,49 +48,26 @@ export const OrderComponent = () => {
       return;
     }
     try {
-      Swal.fire({
-        title: "Confirmar pedido",
-        html: `
-        <b>Cliente:</b> ${client} </br>
-        <b>Cantidad de sticker:</b> ${totalStickers} Uni.</br>
-        <b>Total: </b> $${total_price}
-        `,
-        icon: "warning",
-        theme: "dark",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Guardar Pedido",
-        cancelButtonText: "Volver atras",
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          const data: OrderInput = {
-            name: client,
-            total_price,
-            prepaid: false,
-            delivered: false,
-          };
-          const orden = await createOrder(data, token);
-          console.log(orden);
-          if (orden.success) {
-            const copyMessage = copyOrderToClipboard(
-              client,
-              items,
-              total_price
-            );
-            console.log(copyMessage);
-            //Gurdar en base de datos luego
-            clearTotalOrder();
-            Swal.fire({
-              title: "Pedido Creado | Listo para Enviar al Cliente",
-              text: "Ahora ya podes pegar el mensaje en el chat de tu cliente.",
-              icon: "success",
-              theme: "dark",
-            });
-            router.refresh();
-          }
-        }
-      });
+      const copyMessage = await copyOrderToClipboard(
+        client,
+        items,
+        total_price
+      );
+      const data: OrderInput = {
+        name: client,
+        total_price,
+        prepaid: false,
+        delivered: false,
+        message_client: copyMessage,
+      };
+      const orden = await createOrder(data, token);
+      console.log(orden);
+      if (orden.success) {
+        //Gurdar en base de datos luego
+        clearTotalOrder();
+        router.refresh();
+        toast.success("✨Pedido creado!");
+      }
       setBlockButton(false);
     } catch (error) {
       toast.error("Token expirado. Debe logearse de nuevo.");
@@ -125,6 +102,15 @@ export const OrderComponent = () => {
   return (
     <div className="w-full">
       <div className="px-6 pb-4 flex flex-col gap-3">
+        <div className="w-full flex justify-end items-end">
+          <button
+            onClick={() => handleDeleteTotalOrder()}
+            className="from-red-500 via-red-600 to-red-700 focus:ring-red-800 hover:bg-gradient-to-br cursor-pointer text-white bg-gradient-to-r focus:ring-4 focus:outline-none shadow-lg font-medium rounded-lg text-md px-5 py-2 text-center font-mono flex items-center gap-2"
+          >
+            <Trash2 size={22} />
+            Cancelar Pedido
+          </button>
+        </div>
         <div className="w-full">
           <label
             htmlFor="nombre"
@@ -181,13 +167,6 @@ export const OrderComponent = () => {
         </div>
       </div>
       <div className="w-full flex font-mono px-6 items-center justify-center gap-6 ">
-        <button
-          onClick={() => handleDeleteTotalOrder()}
-          className="from-yellow-500 via-yellow-600 to-yellow-700 focus:ring-yellow-800 hover:bg-gradient-to-br cursor-pointer text-white bg-gradient-to-r focus:ring-4 focus:outline-none shadow-lg font-medium rounded-lg text-md px-5 mt-6 py-2 text-center font-mono flex items-center gap-2 mb-6"
-        >
-          <PackageX size={22} />
-          Limpiar Pedido
-        </button>
         <button
           onClick={() => handleSubmitOrder()}
           disabled={blockButton}
