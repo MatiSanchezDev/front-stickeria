@@ -1,4 +1,4 @@
-import { Order, OrderId } from "@/interface/order.interface";
+import { Order, OrderId, OrderInput } from "@/interface/order.interface";
 import { Token } from "@/interface/token.interfase";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
@@ -27,7 +27,7 @@ export async function getOrder(id: OrderId, token: Token) {
   return res.json();
 }
 
-export async function createOrder(sticker: Order, token: Token) {
+export async function createOrder(sticker: OrderInput, token: Token) {
   const res = await fetch(`${API_BASE}/order`, {
     method: "POST",
     headers: {
@@ -40,7 +40,11 @@ export async function createOrder(sticker: Order, token: Token) {
   return res.json();
 }
 
-export async function editOrder(id: OrderId, payload: Order, token: Token) {
+export async function editOrder(
+  id: OrderId,
+  payload: OrderInput,
+  token: Token
+) {
   const res = await fetch(`${API_BASE}/order/${id}`, {
     method: "PUT",
     headers: {

@@ -7,7 +7,6 @@ export const SectionCardSticker = async () => {
     const cookieStore = await cookies();
     const token = cookieStore.get("tokenAccess")?.value.toString() || "";
     const stickers = await getStickers(token);
-    console.log(stickers);
 
     return (
       <>

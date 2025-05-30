@@ -1,18 +1,32 @@
 "use client";
 import { deleteCookie } from "cookies-next";
+import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 export default function Navbar() {
   const router = useRouter();
   const path = usePathname().replace("/", "");
-  console.log(path);
 
   const handleLogout = () => {
-    deleteCookie("tokenAccess");
-    router.push("/");
-    toast.success("Ustéd cerró sesión con éxito. ¡Vuelva pronto!");
+    Swal.fire({
+      title: "¿Queres salir de tu cuenta?",
+      icon: "warning",
+      theme: "dark",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Salir de mi Cuenta",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteCookie("tokenAccess");
+        router.push("/");
+        toast.success("Ustéd cerró sesión con éxito. ¡Vuelva pronto!");
+      }
+    });
   };
 
   return (
@@ -30,9 +44,10 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => handleLogout()}
-            className="text-white focus:ring-4 focus:outline-none rounded-lg text-sm px-4 py-2 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800 font-mono tracking-wider cursor-pointer"
+            className="bg-gradient-to-r hover:bg-gradient-to-br from-yellow-500 via-yellow-600 to-yellow-700 focus:ring-yellow-800 shadow-yellow-800/80 text-white focus:ring-4 focus:outline-none rounded-lg text-sm px-4 py-2 text-center font-mono tracking-wider cursor-pointer flex items-center gap-2"
           >
-            Cerrar Sesion
+            <LogOut size={20} />
+            Salir
           </button>
           <button
             data-collapse-toggle="navbar-sticky"

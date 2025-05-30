@@ -23,7 +23,7 @@ export const Login = () => {
     try {
       const login = await loginUser(data);
       if (login.success) {
-        setCookie("tokenAccess", login.token);
+        setCookie("tokenAccess", login.token, { maxAge: 3000 });
         toast.success("Logeada con éxito. Hola Agus!");
         console.log(login);
         router.push("/dashboard");
@@ -39,12 +39,12 @@ export const Login = () => {
   return (
     <section className="bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <span className="flex items-center text-7xl font-mono text-white uppercase mb-10 cursor-default text-shadow-blue-300 text-shadow-lg">
+        <span className="flex items-center text-7xl font-alfa text-white uppercase mb-10 cursor-default text-shadow-blue-300 text-shadow-lg">
           La Stickeria App
         </span>
         <div className="w-full rounded-lg shadow-2xl shadow-blue-900 dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-wider md:text-2xl text-white text-center font-mono">
+            <h1 className="text-xl leading-tight tracking-wider md:text-2xl text-white text-center font-mono">
               Ingresa con tu cuenta
             </h1>
             <form onSubmit={onSubmitForm} className="space-y-4 md:space-y-6">

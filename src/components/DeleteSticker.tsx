@@ -22,6 +22,7 @@ export const DeleteSticker = ({ id, name, price }: Props) => {
       title: "¿Queres eliminar este sticker?",
       text: `Se eliminará el | ${name} | $${price}`,
       icon: "warning",
+      theme: "dark",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -31,6 +32,7 @@ export const DeleteSticker = ({ id, name, price }: Props) => {
       if (result.isConfirmed) {
         Swal.fire({
           title: "Sticker Eliminado",
+          theme: "dark",
           text: `Usted elimino el ${name} | $${price}`,
           icon: "success",
         });
@@ -53,7 +55,7 @@ export const DeleteSticker = ({ id, name, price }: Props) => {
     <button
       onClick={() => handleDeleteSticker()}
       title="Eliminar Sticker"
-      className="absolute left-1 bottom-0 p-1 hover:bg-red-500 rounded-full cursor-pointer"
+      className="bg-yellow-600 hover:bg-yellow-800 cursor-pointer w-1/5 flex justify-center items-center h-full"
     >
       <Trash2 size={18} />
     </button>

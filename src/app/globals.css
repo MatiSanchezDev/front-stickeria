@@ -8,7 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-mono: var(--font-luckiest_guy);
+  --font-mono: var(--font-alfa);
+  --font-alfa: var(--font-luckiest_guy);
 }
 
 body {

@@ -49,8 +49,8 @@ export const CreateSticker = () => {
           onClick={() => setShowForm(!showForm)}
           className={`${
             !showForm
-              ? "from-blue-500 via-blue-600 to-blue-700 focus:ring-blue-800 shadow-blue-800/80 mb-6"
-              : "from-red-500 via-red-600 to-red-700 focus:ring-red-800 mb-6 shadow-red-800/80"
+              ? "from-blue-500 via-blue-600 to-blue-700 focus:ring-blue-800 mb-6"
+              : "from-yellow-500 via-yellow-600 to-yellow-700 focus:ring-yellow-800 mb-6"
           } text-white bg-gradient-to-r hover:bg-gradient-to-br focus:ring-4 focus:outline-none  shadow-lg font-medium rounded-lg text-md px-5 mt-6 py-2 text-center font-mono cursor-pointer`}
         >
           {`${!showForm ? "Agregar Nuevo Sticker" : "Cerrar ventana"}`}
@@ -76,7 +76,7 @@ export const CreateSticker = () => {
               type="text"
               name="namee"
               id="namee"
-              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className=" border rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
               placeholder="Ej: Sticker 5x5 "
               required
             />
@@ -94,7 +94,7 @@ export const CreateSticker = () => {
                 name="price"
                 id="price"
                 placeholder="$500"
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="border rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 required
               />
             </div>
