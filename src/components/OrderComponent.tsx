@@ -66,6 +66,7 @@ export const OrderComponent = () => {
         //Gurdar en base de datos luego
         clearTotalOrder();
         router.refresh();
+        toast.success("📝 Mensaje copiado");
         toast.success("✨Pedido creado!");
       }
       setBlockButton(false);

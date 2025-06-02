@@ -7,7 +7,7 @@ export const copyOrderToClipboard = async (
   total_price: number
 ) => {
   const text = `
-𝗣𝗘𝗗𝗜𝗗𝗢 𝗔 𝗖𝗢𝗡𝗙𝗜𝗥𝗠𝗔𝗥
+𝐏𝐄𝐃𝐈𝐃𝐎 𝐀 𝐂𝐎𝐍𝐅𝐈𝐑𝐌𝐀𝐑
   
 NOMBRE: ${client}
   
@@ -16,7 +16,7 @@ ${items.map((item) => `x${item.quantity} ${item.name}`).join("\n")}
   
 TOTAL: $ ${total_price}
   
-𝗖𝗢𝗡𝗙𝗜𝗥𝗠𝗔𝗥 𝗣𝗘𝗗𝗜𝗗𝗢
+𝐂𝐎𝐍𝐅𝐈𝐑𝐌𝐀𝐑 𝐏𝐄𝐃𝐈𝐃𝐎
 Para confirmar el pedido se debe paga por transferencia y enviar el comprobante.
   
 Nombre de la cuenta: Agustina Sanchez

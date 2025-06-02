@@ -2,11 +2,11 @@
 import { CheckCheck, ClipboardCopy } from "lucide-react";
 import { useState } from "react";
 
-const text = `*GRACIAS POR SU COMPRA*
+const text = `𝐆𝐑𝐀𝐂𝐈𝐀𝐒 𝐏𝐎𝐑 𝐒𝐔 𝐂𝐎𝐌𝐏𝐑𝐀
 
 Recordá que el pedido tiene una demora de 3 dias aprox, (puede extenderse por dias feriados o casos extraordinarios). Nos comunicaremos cuando su pedido esté listo para retirar.
 
-*Retirar por:*
+𝐑𝐄𝐓𝐈𝐑𝐀𝐑 𝐏𝐎𝐑:
 Castelli 637 - Entre Belgrano y Gobernador Gomez - Casa roja portón negro.`;
 
 export const CopyButton = () => {
