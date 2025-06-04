@@ -11,21 +11,28 @@ export const metadata: Metadata = {
 
 export default function DashboardPage() {
   return (
-    <section className="p-6 w-full h-auto bg-gray-900 text-white">
+    <section className="p-3 md:p-6 w-full h-auto bg-gray-900 text-white">
       <div className="w-full flex justify-center items-center">
-        <span className="text-7xl cursor-default">🦄</span>
+        <span className="text-7xl cursor-default mb-2 md:mb-0">🦄</span>
       </div>
+
       <h1 className="text-center text-4xl font-bold pt-1 font-alfa cursor-default">
         Stickeria App
       </h1>
       <CreateSticker />
-      <div className="grid grid-cols-2 w-full h-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full h-auto">
         <div className="flex flex-col">
-          <h2 className="font-alfa text-2xl text-center mb-6">Stickers</h2>
+          <hr className="block md:hidden mb-4" />
+          <h2 className="font-alfa text-4xl text-center mb-6 underline">
+            Stickers
+          </h2>
           <SectionCardSticker />
         </div>
         <div>
-          <h2 className="font-alfa text-2xl text-center mb-6">Nuevo Pedido</h2>
+          <hr className="block md:hidden my-4" />
+          <h2 className="font-alfa text-4xl text-center mb-6 mt-4 md:mt-0 underline">
+            Nuevo Pedido
+          </h2>
           <SectionOrderSticker />
         </div>
       </div>

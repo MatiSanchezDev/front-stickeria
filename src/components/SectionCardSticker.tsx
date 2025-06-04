@@ -11,7 +11,7 @@ export const SectionCardSticker = async () => {
     return (
       <>
         {stickers.data.length > 0 && (
-          <div className="grid grid-cols-3 gap-6 my-2 relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 my-2 relative">
             <StickerCard stickers={stickers.data} />
           </div>
         )}

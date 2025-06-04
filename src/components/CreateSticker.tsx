@@ -52,7 +52,7 @@ export const CreateSticker = () => {
             !showForm
               ? "from-blue-500 via-blue-600 to-blue-700 focus:ring-blue-800 mb-6"
               : "from-yellow-500 via-yellow-600 to-yellow-700 focus:ring-yellow-800 mb-6"
-          } text-white bg-gradient-to-r hover:bg-gradient-to-br focus:ring-4 focus:outline-none  shadow-lg font-medium rounded-lg text-md px-5 mt-6 py-2 text-center font-mono cursor-pointer`}
+          } text-white bg-gradient-to-r hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg font-medium rounded-lg text-sm px-5 mt-6 py-2 text-center font-mono cursor-pointer`}
         >
           {`${!showForm ? "Agregar Nuevo Sticker" : "Cerrar ventana"}`}
         </button>
@@ -61,7 +61,7 @@ export const CreateSticker = () => {
       {showForm && (
         <form
           onSubmit={onSubmitForm}
-          className="flex justify-center items-center flex-col w-1/3  border-2 p-6 rounded-2xl bg-gray-800 "
+          className="flex justify-center items-center flex-col w-full md:w-1/3 border-2 p-6 rounded-2xl bg-gray-800 "
         >
           <h2 className="font-mono text-2xl text-center mb-4">
             Agregar nuevo Sticker

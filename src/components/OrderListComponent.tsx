@@ -24,7 +24,7 @@ export const OrderListComponent = async () => {
       <h2 className="text-2xl font-alfa text-center pb-5">
         Tus ultimos pedidos
       </h2>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg px-10 font-mono">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg px-0 md:px-10 font-mono">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

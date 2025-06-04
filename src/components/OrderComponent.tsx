@@ -102,8 +102,8 @@ export const OrderComponent = () => {
 
   return (
     <div className="w-full">
-      <div className="px-6 pb-4 flex flex-col gap-3">
-        <div className="w-full flex justify-end items-end">
+      <div className="px-0 md:px-6 pb-4 flex flex-col gap-3">
+        <div className="w-full flex justify-center items-center md:justify-end md:items-end">
           <button
             onClick={() => handleDeleteTotalOrder()}
             className="from-red-500 via-red-600 to-red-700 focus:ring-red-800 hover:bg-gradient-to-br cursor-pointer text-white bg-gradient-to-r focus:ring-4 focus:outline-none shadow-lg font-medium rounded-lg text-md px-5 py-2 text-center font-mono flex items-center gap-2"

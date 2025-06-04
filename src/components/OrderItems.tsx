@@ -26,7 +26,7 @@ export const OrderItems = () => {
 
   return (
     <>
-      <div className="px-6 w-full border border-white/10 rounded-2xl pt-3 pb-5">
+      <div className="px-1 md:px-6 w-full border border-white/10 rounded-2xl pt-3 pb-5">
         <h2 className="text-center mb-2 text-md font-bold text-white font-mono tracking-widest">
           🌟 Stickers del pedido 🌟
         </h2>
@@ -35,7 +35,7 @@ export const OrderItems = () => {
             key={orden.id}
             className="rounded-lg border p-5 shadow-sm border-gray-700 bg-gray-800 w-full mb-2"
           >
-            <div className="md:flex items-center justify-between gap-6 ">
+            <div className="flex items-center justify-between gap-6 ">
               <button
                 onClick={() => handleDelOrder(orden.id)}
                 className="p-2 hover:bg-red-500 rounded-full cursor-pointer"
@@ -65,7 +65,7 @@ export const OrderItems = () => {
                       />
                     </svg>
                   </button>
-                  <span className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium focus:outline-none focus:ring-0 text-white">
+                  <span className="w-6 shrink-0 border-0 bg-transparent text-center text-sm font-medium focus:outline-none focus:ring-0 text-white">
                     {orden.quantity}
                   </span>
                   <button
@@ -90,15 +90,14 @@ export const OrderItems = () => {
                     </svg>
                   </button>
                 </div>
-                <div className="text-end md:order-4 md:w-32">
+                <div className="text-end md:order-4 md:w-32 ml-4">
                   <p className="text-xl font-mono text-white underline underline-offset-4">
                     $ {orden.price * orden.quantity}
                   </p>
                 </div>
               </div>
-
               <div className="w-full min-w-0 flex-1 space-y-2 md:order-2 md:max-w-md cursor-default">
-                <span className="text-xl font-mono underline underline-offset-4 text-white capitalize">
+                <span className="text-sm md:text-xl font-mono underline underline-offset-4 text-white capitalize">
                   {orden.name}
                 </span>
               </div>
