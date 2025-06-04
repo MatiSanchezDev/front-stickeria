@@ -25,8 +25,8 @@ export const OrderListComponent = async () => {
         Tus ultimos pedidos
       </h2>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg px-0 md:px-10 font-mono">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-400">
+          <thead className="text-xs uppercase b bg-gray-700 text-gray-400">
             <tr>
               <th scope="col" className="px-2 py-3 text-center">
                 Codigo del pedido
@@ -56,10 +56,10 @@ export const OrderListComponent = async () => {
           </thead>
           <tbody>
             {ordenadosDesc.length === 0 && (
-              <tr className="text-lg border-b border-gray-300 dark:border-gray-600">
+              <tr className="text-lg border-b  border-gray-600">
                 <th
                   scope="row"
-                  className="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
+                  className="px-2 py-4 font-medium whitespace-nowrap text-white text-center"
                 >
                   # ---
                 </th>
@@ -73,13 +73,10 @@ export const OrderListComponent = async () => {
               </tr>
             )}
             {ordenadosDesc.map((order: Order) => (
-              <tr
-                key={order.id}
-                className="text-lg border-b border-gray-300 dark:border-gray-600"
-              >
+              <tr key={order.id} className="text-lg border-b  border-gray-600">
                 <th
                   scope="row"
-                  className="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
+                  className="px-2 py-4 font-medium whitespace-nowrap text-white text-center"
                 >
                   #{order.id}
                 </th>
