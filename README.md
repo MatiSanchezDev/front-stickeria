@@ -43,9 +43,9 @@ Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local:
     ```bash
     npm install
 4. Arrancar el proyecto:
-```bash
+   ```bash
     npm run dev
-```
+   ```
 ## Uso
 >[!IMPORTANT]
 > Para que funcione tener en cuenta lo siguiente:
@@ -53,7 +53,7 @@ Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local:
 > Debe clonar tambien el repositorio de [Back-Stickeria](https://github.com/MatiSanchezDev/back-stickeria) y ejecutarlo en el puerto que tenga disponible.
 > Crear en front-stickeria un archivo llamado ".env" y agregar lo siguiente:
 
-```bash
+   ```bash
    NEXT_PUBLIC_API_BASE=http://localhost:3002 (Puerto en el que esté corriendo tu backend)
    ```
 ## Contacto
