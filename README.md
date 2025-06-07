@@ -27,8 +27,8 @@ Aplicación web desarrollada con **Next.js** y **TypeScript**, diseñada para ge
 
 
 ## Capturas de Pantalla
-![Pantalla 1](https://github.com/MatiSanchezDev/front-stickeria/blob/main/imagen1.png?raw=true)
-![Pantalla 2](https://github.com/MatiSanchezDev/front-stickeria/blob/main/imagen2.png?raw=true)
+![Pantalla 1](https://github.com/MatiSanchezDev/front-stickeria/blob/main/ejemplo1.png?raw=true)
+![Pantalla 2](https://github.com/MatiSanchezDev/front-stickeria/blob/main/ejemplo2.png?raw=true)
 
 ## Instalación
 Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local:
