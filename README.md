@@ -3,21 +3,21 @@
 Aplicación web desarrollada con **Next.js** y **TypeScript**, diseñada para gestionar pedidos, ingresos y comunicación con clientes de manera ágil y eficiente. El proyecto forma parte de una experiencia real como freelancer y está enfocado en la solución de necesidades comerciales concretas.
 
 ## Tabla de Contenidos
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Capturas de Pantalla](#capturas-de-pantalla)
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Contacto](#contacto)
+- 🧩[Funcionalidades](#funcionalidades)
+- 🧪[Tecnologias Utilizadas](#tecnologias-utilizadas)
+- 🖼️[Capturas de Pantalla](#capturas-de-pantalla)
+- 🛠️[Instalación](#instalación)
+- 🚀[Uso](#uso)
+- 📬[Contacto](#contacto)
 
-## 🧩 Funcionalidades
+## <a name="funcionalidades"></a>🧩 Funcionalidades
 
 - 📦 Gestión completa de pedidos
 - 💬 Mensajes detallados entre cliente y vendedor
 - 📈 Consulta de ingresos mensuales
 - 📱 Diseño responsive (adaptado a móvil y escritorio)
 
-## 🚀 Tecnologías Utilizadas
+## <a name="tecnologias-utilizadas"></a>🧪 Tecnologías Utilizadas
 
 - ⚛️ **Next.js** – Framework React con soporte para SSR/SSG
 - 🟦 **TypeScript** – Tipado estático para mayor escalabilidad
@@ -26,11 +26,11 @@ Aplicación web desarrollada con **Next.js** y **TypeScript**, diseñada para ge
 - 🔧 **Vercel** – Deploy automático y hosting moderno
 
 
-## Capturas de Pantalla
+## <a name="capturas-de-pantalla"></a>🖼️Capturas de Pantalla
 ![Pantalla 1](https://github.com/MatiSanchezDev/front-stickeria/blob/main/ejemplo1.png?raw=true)
 ![Pantalla 2](https://github.com/MatiSanchezDev/front-stickeria/blob/main/ejemplo2.png?raw=true)
 
-## Instalación
+## <a name="instalación"></a>🛠️Instalación
 Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local:
 
 1. Clona el repositorio:
@@ -46,7 +46,7 @@ Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local:
    ```bash
     npm run dev
    ```
-## Uso
+## <a name="uso"></a>🚀Uso
 >[!IMPORTANT]
 > Para que funcione tener en cuenta lo siguiente:
 
@@ -56,6 +56,6 @@ Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local:
    ```bash
    NEXT_PUBLIC_API_BASE=http://localhost:3002 (Puerto en el que esté corriendo tu backend)
    ```
-## Contacto
+## <a name="contacto"></a>📬Contacto
 Matias N. Sanchez - [tu_email@example.com](mailto:tu_email@example.com)  
 GitHub: [MatiSanchezDev](https://github.com/MatiSanchezDev)
