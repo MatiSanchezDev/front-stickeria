@@ -100,17 +100,17 @@ export default function Navbar() {
               >
                 Pedidos
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
-                href="/my-earnings"
+                href="/dashboard/ingresos"
                 className={`block py-2 px-3 rounded-sm md:bg-transparent md:p-0 ${
-                  path === "my-earnings" ? "text-blue-500" : "text-white"
+                  path === "dashboard/ingresos" ? "text-blue-500" : "text-white"
                 } hover:text-blue-500`}
               >
-                Ganancias
+                Ingresos
               </Link>
-            </li> */}
+            </li>
           </ul>
         </div>
       </div>

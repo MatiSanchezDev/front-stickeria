@@ -81,8 +81,8 @@ export const OrderListComponent = async () => {
                   #{ordenadosDesc.length - index}
                 </th>
                 <td className="px-6 py-4 capitalize">{order.name}</td>
-                <td className="px-6 py-4 text-center text-xl">
-                  $ {order.total_price}
+                <td className="px-6 py-4 text-center text-xl items-start">
+                  $ {order.total_price.toLocaleString()}
                 </td>
                 <td className="px-6 py-4 text-center text-md">
                   {formatToBuenosAiresTime(order.created_at)}
