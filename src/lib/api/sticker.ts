@@ -11,7 +11,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 export async function getStickers(token: Token, page?: string, limit?: string) {
   try {
     const pages = page || "1";
-    const limits = limit || "9";
+    const limits = limit || "50";
     const res = await fetch(`${API_BASE}/item?page=${pages}&limit=${limits}`, {
       method: "GET",
       headers: {
