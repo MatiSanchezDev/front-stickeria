@@ -29,7 +29,7 @@ export const OrderListComponent = async () => {
           <thead className="text-xs uppercase b bg-gray-700 text-gray-400">
             <tr>
               <th scope="col" className="px-2 py-3 text-center">
-                Codigo del pedido
+                Pedido Nro.
               </th>
               <th scope="col" className="px-6 py-3 text-center">
                 Nombre
@@ -72,13 +72,13 @@ export const OrderListComponent = async () => {
                 <td className="px-6 py-4 text-center text-md">---</td>
               </tr>
             )}
-            {ordenadosDesc.map((order: Order) => (
+            {ordenadosDesc.map((order: Order, index: number) => (
               <tr key={order.id} className="text-lg border-b  border-gray-600">
                 <th
                   scope="row"
                   className="px-2 py-4 font-medium whitespace-nowrap text-white text-center"
                 >
-                  #{order.id}
+                  #{ordenadosDesc.length - index}
                 </th>
                 <td className="px-6 py-4 capitalize">{order.name}</td>
                 <td className="px-6 py-4 text-center text-xl">
