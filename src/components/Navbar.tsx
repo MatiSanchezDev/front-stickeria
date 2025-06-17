@@ -82,7 +82,7 @@ export default function Navbar() {
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-mono border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 tracking-wider">
             <li>
               <Link
-                href="/"
+                href="/dashboard"
                 className={`block py-2 px-3 rounded-sm md:bg-transparent md:p-0 ${
                   path === "dashboard" ? "text-blue-500" : "text-white"
                 } hover:text-blue-500`}
