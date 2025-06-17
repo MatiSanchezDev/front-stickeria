@@ -57,5 +57,5 @@ Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local:
    NEXT_PUBLIC_API_BASE=http://localhost:3002 (Puerto en el que esté corriendo tu backend)
    ```
 ## <a name="contacto"></a>📬Contacto
-Matias N. Sanchez - [tu_email@example.com](mailto:tu_email@example.com)  
+Matias N. Sanchez - [sanchezmatidev@gmail.com](sanchezmatidev@gmail.com)  
 GitHub: [MatiSanchezDev](https://github.com/MatiSanchezDev)
