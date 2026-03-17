@@ -1,5 +1,5 @@
 import { Order } from "@/interface/order.interface";
-import { getOrders } from "@/lib/api/order";
+import { getOrdersServices } from "@/lib/services/orderService";
 import { cookies } from "next/headers";
 import { Checkboxs } from "./Checkboxs";
 import { DeleteOrder } from "./DeleteOrder";
@@ -8,7 +8,7 @@ import { CopyOrderButton } from "./CopyOrderButton";
 export const OrderListComponent = async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get("tokenAccess")?.value.toString() || "";
-  const orders = await getOrders(token);
+  const orders = await getOrdersServices(1, 100, token);
   const ordenadosDesc = [...orders.data].sort((a, b) => b.id - a.id);
 
   const formatToBuenosAiresTime = (utcDateString: string) => {

@@ -2,13 +2,11 @@ import { OrderId, OrderInput } from "@/interface/order.interface";
 import { Token } from "@/interface/token.interfase";
 import { notFound } from "next/navigation";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
-
 export async function getOrders(token: Token, page?: string, limit?: string) {
   try {
     const pages = page || "1";
     const limits = limit || "100";
-    const res = await fetch(`${API_BASE}/order?page=${pages}&limit=${limits}`, {
+    const res = await fetch(`/api/order?page=${pages}&limit=${limits}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +26,7 @@ export async function getOrders(token: Token, page?: string, limit?: string) {
 
 export async function getOrder(id: OrderId, token: Token) {
   try {
-    const res = await fetch(`${API_BASE}/order/${id}`, {
+    const res = await fetch(`/api/order/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +43,7 @@ export async function getOrder(id: OrderId, token: Token) {
 
 export async function createOrder(sticker: OrderInput, token: Token) {
   try {
-    const res = await fetch(`${API_BASE}/order`, {
+    const res = await fetch(`/api/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +65,7 @@ export async function editOrder(
   token: Token
 ) {
   try {
-    const res = await fetch(`${API_BASE}/order/${id}`, {
+    const res = await fetch(`/api/order/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +83,7 @@ export async function editOrder(
 
 export async function deleteOrder(id: OrderId, token: Token) {
   try {
-    const res = await fetch(`${API_BASE}/order/${id}`, {
+    const res = await fetch(`/api/order/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

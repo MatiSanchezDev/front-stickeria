@@ -6,13 +6,11 @@ import {
 import { Token } from "@/interface/token.interfase";
 import { notFound } from "next/navigation";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
-
 export async function getStickers(token: Token, page?: string, limit?: string) {
   try {
     const pages = page || "1";
     const limits = limit || "50";
-    const res = await fetch(`${API_BASE}/item?page=${pages}&limit=${limits}`, {
+    const res = await fetch(`/api/item?page=${pages}&limit=${limits}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +27,7 @@ export async function getStickers(token: Token, page?: string, limit?: string) {
 
 export async function getSticker(id: StickerId, token: Token) {
   try {
-    const res = await fetch(`${API_BASE}/item/${id}`, {
+    const res = await fetch(`/api/item/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +44,7 @@ export async function getSticker(id: StickerId, token: Token) {
 
 export async function createSticker(sticker: StickerInput, token: Token) {
   try {
-    const res = await fetch(`${API_BASE}/item`, {
+    const res = await fetch(`/api/item`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +66,7 @@ export async function editSticker(
   token: Token
 ) {
   try {
-    const res = await fetch(`${API_BASE}/item/${id}`, {
+    const res = await fetch(`/api/item/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -86,7 +84,7 @@ export async function editSticker(
 
 export async function deleteSticker(id: StickerId, token: Token) {
   try {
-    const res = await fetch(`${API_BASE}/item/${id}`, {
+    const res = await fetch(`/api/item/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

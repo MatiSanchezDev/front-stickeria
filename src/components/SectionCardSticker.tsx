@@ -1,12 +1,12 @@
-import { getStickers } from "@/lib/api/sticker";
+import { getItemsServices } from "@/lib/services/stickerService";
 import { cookies } from "next/headers";
 import { StickerCard } from "./StickerCard";
 
 export const SectionCardSticker = async () => {
   try {
     const cookieStore = await cookies();
-    const token = cookieStore.get("tokenAccess")?.value.toString() || "";
-    const stickers = await getStickers(token);
+    const token = cookieStore.get("tokenAccess")?.value || "";
+    const stickers = await getItemsServices(1, 50, token);
 
     return (
       <>
@@ -15,7 +15,7 @@ export const SectionCardSticker = async () => {
             <StickerCard stickers={stickers.data} />
           </div>
         )}
-        {stickers.length === 0 && (
+        {stickers.total === 0 && (
           <div className="w-full flex flex-col justify-center items-center ">
             <h2 className="text-2xl font-mono">No hay stickers actualmente.</h2>
             <p className="font-thin">
