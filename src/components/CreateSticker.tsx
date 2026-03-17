@@ -7,12 +7,16 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { CopyButton } from "./CopyButton";
+import { Plus, X } from "lucide-react";
 
 export const CreateSticker = () => {
   const router = useRouter();
-  const [showForm, setShowForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [blockButton, setBlockButton] = useState(false);
   const token = getCookie("tokenAccess")?.toString() || "";
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   const onSubmitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     setBlockButton(true);
@@ -21,10 +25,7 @@ export const CreateSticker = () => {
     const nameSticker = target.namee.value.trim();
     const priceSticker = Number(target.price.value.trim());
 
-    const data: StickerInput = {
-      name: nameSticker,
-      price: priceSticker,
-    };
+    const data: StickerInput = { name: nameSticker, price: priceSticker };
 
     try {
       const sticker = await createSticker(data, token);
@@ -32,87 +33,131 @@ export const CreateSticker = () => {
         toast.success(sticker.message);
         router.refresh();
         setBlockButton(false);
-        setShowForm(false);
+        closeModal();
       }
     } catch (error) {
-      console.log("Entre al catch: ", error);
-      toast.error(
-        "Cierre sesion y vuelva a iniciar en caso de salir este error."
-      );
+      console.log(error);
+      toast.error("Cerrá sesión y volvé a ingresar.");
       setBlockButton(false);
     }
   };
 
   return (
-    <div className="w-full flex justify-center items-center flex-col mb-8">
-      <div className="flex gap-3">
+    <>
+      <div className="w-full flex justify-center items-center gap-3 mb-6 flex-wrap">
         <button
-          onClick={() => setShowForm(!showForm)}
-          className={`${
-            !showForm
-              ? "from-blue-500 via-blue-600 to-blue-700 focus:ring-blue-800 mb-6"
-              : "from-yellow-500 via-yellow-600 to-yellow-700 focus:ring-yellow-800 mb-6"
-          } text-white bg-gradient-to-r hover:bg-gradient-to-br focus:ring-4 focus:outline-none shadow-lg font-medium rounded-lg text-sm px-5 mt-6 py-2 text-center font-mono cursor-pointer`}
+          onClick={openModal}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full text-white font-semibold text-sm cursor-pointer transition-opacity hover:opacity-90"
+          style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}
         >
-          {`${!showForm ? "Agregar Nuevo Sticker" : "Cerrar ventana"}`}
+          <Plus size={15} />
+          Agregar Nuevo Sticker
         </button>
         <CopyButton />
       </div>
-      {showForm && (
-        <form
-          onSubmit={onSubmitForm}
-          className="flex justify-center items-center flex-col w-full md:w-1/3 border-2 p-6 rounded-2xl bg-gray-800 "
+
+      {showModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)" }}
+          onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}
         >
-          <h2 className="font-mono text-2xl text-center mb-4">
-            Agregar nuevo Sticker
-          </h2>
-          <div className="w-full">
-            <label
-              htmlFor="namee"
-              className="block mb-2 text-sm font-bold text-white"
-            >
-              Numbre del Sticker Personalizados
-            </label>
-            <input
-              type="text"
-              name="namee"
-              id="namee"
-              className=" border rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Ej: Sticker 5x5 "
-              required
-            />
-          </div>
-          <div className="w-full">
-            <label
-              htmlFor="price"
-              className="block mb-2 text-sm font-bold text-gray-900 dark:text-white pt-4"
-            >
-              Precio del Sticker
-            </label>
-            <div className="w-full relative">
-              <input
-                type={"number"}
-                name="price"
-                id="price"
-                placeholder="$500"
-                className="border rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                required
-              />
-            </div>
-          </div>
-          <button
-            disabled={blockButton}
-            type="submit"
-            className={`text-white ${
-              blockButton
-                ? "bg-gray-500 cursor-not-allowed focus:ring-4 focus:outline-none focus:ring-gray-800 shadow-lg shadow-gray-800/80"
-                : "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-800 shadow-lg shadow-blue-800/80"
-            } font-medium rounded-lg text-md px-5 mt-6 py-2 text-center font-mono w-full`}
+          <div
+            className="relative w-full max-w-md rounded-2xl p-6"
+            style={{
+              backgroundColor: "#1a1a2e",
+              border: "1px solid rgba(168,85,247,0.3)",
+              boxShadow: "0 0 60px rgba(168,85,247,0.15)",
+            }}
           >
-            Agregar Sticker
-          </button>
-        </form>
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 p-1.5 rounded-lg cursor-pointer transition-colors"
+              style={{ color: "#64748b" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#f1f5f9")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#64748b")}
+            >
+              <X size={17} />
+            </button>
+
+            <h2 className="font-bold text-xl text-center text-white mb-6">
+              Agregar Sticker
+            </h2>
+
+            <form onSubmit={onSubmitForm} className="flex flex-col gap-4">
+              <div>
+                <label className="block mb-2 text-sm font-medium" style={{ color: "#94a3b8" }}>
+                  Nombre
+                </label>
+                <input
+                  type="text"
+                  name="namee"
+                  id="namee"
+                  placeholder="Ej: Sticker 5x5"
+                  required
+                  autoFocus
+                  className="w-full px-4 py-2.5 rounded-xl text-sm outline-none transition-all text-white"
+                  style={{
+                    backgroundColor: "#0f0f1e",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                  }}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(168,85,247,0.6)")}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2 text-sm font-medium" style={{ color: "#94a3b8" }}>
+                  Precio
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  id="price"
+                  placeholder="$500"
+                  required
+                  className="w-full px-4 py-2.5 rounded-xl text-sm outline-none transition-all text-white [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  style={{
+                    backgroundColor: "#0f0f1e",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                  }}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(168,85,247,0.6)")}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
+                />
+              </div>
+
+              <div className="flex gap-3 mt-1">
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="flex-1 py-2.5 rounded-xl font-medium text-sm cursor-pointer transition-colors"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    color: "#94a3b8",
+                  }}
+                >
+                  Cancelar
+                </button>
+                <button
+                  disabled={blockButton}
+                  type="submit"
+                  className="flex-1 py-2.5 rounded-xl font-semibold text-sm text-white transition-opacity"
+                  style={{
+                    background: blockButton
+                      ? "rgba(168,85,247,0.4)"
+                      : "linear-gradient(135deg, #a855f7, #ec4899)",
+                    cursor: blockButton ? "not-allowed" : "pointer",
+                    opacity: blockButton ? 0.7 : 1,
+                  }}
+                >
+                  {blockButton ? "Agregando..." : "Agregar"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 };

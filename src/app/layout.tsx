@@ -19,9 +19,6 @@ const anton = Roboto({
 export const metadata: Metadata = {
   title: "Stickeria App",
   description: "Manejo de pedidos e ingresos.",
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({
@@ -35,7 +32,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
       <body
-        className={`${luckiestGuy.variable} ${anton.variable} antialiased bg-gray-900 text-white`}
+        className={`${luckiestGuy.variable} ${anton.variable} antialiased text-white`}
       >
         {children}
         <ToastContainer

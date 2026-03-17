@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 export const copyOrderToClipboard = async (
   client: string,
   items: OrderItem[],
-  total_price: number
+  total_price: number,
 ) => {
   const text = `
 𝐏𝐄𝐃𝐈𝐃𝐎 𝐀 𝐂𝐎𝐍𝐅𝐈𝐑𝐌𝐀𝐑
@@ -17,7 +17,7 @@ ${items.map((item) => `x${item.quantity} ${item.name}`).join("\n")}
 TOTAL: $ ${total_price}
   
 𝐂𝐎𝐍𝐅𝐈𝐑𝐌𝐀𝐑 𝐏𝐄𝐃𝐈𝐃𝐎
-Para confirmar el pedido se debe pagar por transferencia y enviar el comprobante.
+Para confirmar el pedido se debe abonar el total por transferencia y enviar el comprobante.
   
 Nombre de la cuenta: Agustina Sanchez
 Alias: lastickeriacuruzu

@@ -82,6 +82,22 @@ export async function editSticker(
   }
 }
 
+export async function reorderStickers(
+  items: Array<{ id: number; position: number }>,
+  token: Token
+) {
+  const res = await fetch(`/api/item/reorder`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ items }),
+  });
+  if (!res.ok) throw new Error("Error al reordenar.");
+  return res.json();
+}
+
 export async function deleteSticker(id: StickerId, token: Token) {
   try {
     const res = await fetch(`/api/item/${id}`, {

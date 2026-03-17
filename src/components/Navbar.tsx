@@ -1,6 +1,6 @@
 "use client";
 import { deleteCookie } from "cookies-next";
-import { LogOut } from "lucide-react";
+import { LogOut, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -8,111 +8,84 @@ import Swal from "sweetalert2";
 
 export default function Navbar() {
   const router = useRouter();
-  const path = usePathname().replace("/", "");
+  const path = usePathname();
 
   const handleLogout = () => {
     Swal.fire({
-      title: "¿Queres salir de tu cuenta?",
+      title: "¿Salir de tu cuenta?",
       icon: "warning",
       theme: "dark",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Salir de mi Cuenta",
+      confirmButtonColor: "#a855f7",
+      cancelButtonColor: "#374151",
+      confirmButtonText: "Salir",
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteCookie("tokenAccess");
         router.refresh();
         router.push("/");
-        toast.success("Ustéd cerró sesión con éxito. ¡Vuelva pronto!");
+        toast.success("Sesión cerrada. ¡Hasta pronto!");
       }
     });
   };
 
   return (
-    <nav className="bg-gray-800 w-full start-0 border-b border-gray-600">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link
-          href={"/dashboard"}
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <span className="self-center text-2xl font-semibold text-white font-mono tracking-wider hover:text-blue-400">
+    <nav
+      className="w-full sticky top-0 z-40"
+      style={{
+        backgroundColor: "rgba(15,15,30,0.85)",
+        borderBottom: "1px solid rgba(255,255,255,0.07)",
+        backdropFilter: "blur(12px)",
+      }}
+    >
+      <div className="max-w-screen-xl flex items-center justify-between mx-auto px-4 py-3">
+        {/* Logo */}
+        <Link href="/dashboard" className="flex items-center gap-2.5">
+          <div
+            className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+            style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}
+          >
+            <Sparkles size={17} className="text-white" />
+          </div>
+          <span className="text-white font-bold text-lg tracking-tight">
             Stickeria
           </span>
         </Link>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button
-            type="button"
-            onClick={() => handleLogout()}
-            className="bg-gradient-to-r hover:bg-gradient-to-br from-yellow-500 via-yellow-600 to-yellow-700 focus:ring-yellow-800 shadow-yellow-800/80 text-white focus:ring-4 focus:outline-none rounded-lg text-sm px-4 py-2 text-center font-mono tracking-wider cursor-pointer flex items-center gap-2"
-          >
-            <LogOut size={20} />
-            Salir
-          </button>
-          <button
-            data-collapse-toggle="navbar-sticky"
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden  focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600 cursor-pointer"
-            aria-controls="navbar-sticky"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
-        </div>
-        <div
-          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-          id="navbar-sticky"
+
+        {/* Nav links */}
+        <ul className="hidden md:flex items-center gap-1">
+          {[
+            { href: "/dashboard", label: "Inicio" },
+            { href: "/dashboard/ingresos", label: "Ingresos" },
+          ].map(({ href, label }) => {
+            const active = path === href;
+            return (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="px-4 py-2 rounded-lg text-sm font-medium transition-colors block"
+                  style={{
+                    color: active ? "#ffffff" : "#94a3b8",
+                    backgroundColor: active ? "rgba(168,85,247,0.1)" : "transparent",
+                  }}
+                >
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* CTA button */}
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-2 px-4 py-2 rounded-full text-white font-semibold text-sm cursor-pointer transition-opacity hover:opacity-90"
+          style={{ background: "linear-gradient(135deg, #a855f7, #ec4899)" }}
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-mono border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 tracking-wider">
-            <li>
-              <Link
-                href="/dashboard"
-                className={`block py-2 px-3 rounded-sm md:bg-transparent md:p-0 ${
-                  path === "dashboard" ? "text-blue-500" : "text-white"
-                } hover:text-blue-500`}
-                aria-current="page"
-              >
-                Inicio
-              </Link>
-            </li>
-            {/*   <li>
-              <Link
-                href="/my-orders"
-                className={`block py-2 px-3 rounded-sm md:bg-transparent md:p-0 ${
-                  path === "my-orders" ? "text-blue-500" : "text-white"
-                } hover:text-blue-500`}
-              >
-                Pedidos
-              </Link>
-            </li> */}
-            <li>
-              <Link
-                href="/dashboard/ingresos"
-                className={`block py-2 px-3 rounded-sm md:bg-transparent md:p-0 ${
-                  path === "dashboard/ingresos" ? "text-blue-500" : "text-white"
-                } hover:text-blue-500`}
-              >
-                Ingresos
-              </Link>
-            </li>
-          </ul>
-        </div>
+          <LogOut size={15} />
+          Salir
+        </button>
       </div>
     </nav>
   );

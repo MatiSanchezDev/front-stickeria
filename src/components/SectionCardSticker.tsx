@@ -1,6 +1,6 @@
 import { getItemsServices } from "@/lib/services/stickerService";
 import { cookies } from "next/headers";
-import { StickerCard } from "./StickerCard";
+import { StickerDndList } from "./StickerDndList";
 
 export const SectionCardSticker = async () => {
   try {
@@ -8,28 +8,26 @@ export const SectionCardSticker = async () => {
     const token = cookieStore.get("tokenAccess")?.value || "";
     const stickers = await getItemsServices(1, 50, token);
 
+    if (stickers.data.length > 0) {
+      const listKey = stickers.data.map((s) => s.id).join("-");
+      return <StickerDndList key={listKey} stickers={stickers.data} />;
+    }
+
     return (
-      <>
-        {stickers.data.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 my-2 relative">
-            <StickerCard stickers={stickers.data} />
-          </div>
-        )}
-        {stickers.total === 0 && (
-          <div className="w-full flex flex-col justify-center items-center ">
-            <h2 className="text-2xl font-mono">No hay stickers actualmente.</h2>
-            <p className="font-thin">
-              Su inicio de sesion expiró. Por favor ingrese nuevamente.
-            </p>
-          </div>
-        )}
-        {stickers.data.length === 0 && (
-          <div className="w-full flex flex-col justify-center items-center ">
-            <h2 className="text-2xl font-mono">No hay stickers actualmente.</h2>
-            <p className="font-thin">Borró todos los stickers.</p>
-          </div>
-        )}
-      </>
+      <div
+        className="w-full flex flex-col justify-center items-center rounded-2xl p-12 gap-4 text-center"
+        style={{
+          backgroundColor: "#1a1a2e",
+          border: "1px solid rgba(255,255,255,0.07)",
+        }}
+      >
+        <span className="text-5xl">🎴</span>
+        <p className="font-medium" style={{ color: "#94a3b8" }}>
+          {stickers.total === 0
+            ? "Sesión expirada. Reingresá."
+            : "No hay stickers. ¡Creá el primero!"}
+        </p>
+      </div>
     );
   } catch (error) {
     console.log("Error: ", error);

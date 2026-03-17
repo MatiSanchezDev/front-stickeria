@@ -2,24 +2,21 @@
 import { copyOrderToClipboardCreated } from "@/helpers/saveClipboard";
 import { ClipboardCopy } from "lucide-react";
 
-interface Props {
-  message: string;
-}
+interface Props { message: string }
 
 export const CopyOrderButton = ({ message }: Props) => {
-  const copyMessage = async () => {
-    const copyOrder = await copyOrderToClipboardCreated(message);
-    return copyOrder;
-  };
   return (
-    <td className="px-6 py-4 capitalize">
-      <div
-        onClick={() => copyMessage()}
-        title="Copiar texto para enviar"
-        className="flex justify-center items-center cursor-pointer hover:text-green-400"
+    <td className="px-4 py-3 text-center">
+      <button
+        onClick={() => copyOrderToClipboardCreated(message)}
+        title="Copiar mensaje para el cliente"
+        className="p-1.5 rounded-lg cursor-pointer transition-colors"
+        style={{ color: "#64748b" }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = "#a855f7")}
+        onMouseLeave={(e) => (e.currentTarget.style.color = "#64748b")}
       >
-        <ClipboardCopy />
-      </div>
+        <ClipboardCopy size={15} />
+      </button>
     </td>
   );
 };

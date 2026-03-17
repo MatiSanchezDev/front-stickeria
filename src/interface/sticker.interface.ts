@@ -2,6 +2,7 @@ export interface Sticker {
   id: number | string;
   name: string;
   price: number;
+  position?: number;
 }
 
 export interface StickerInput {
@@ -11,6 +12,7 @@ export interface StickerInput {
 
 export interface StickerWithCreatedAt extends Sticker {
   created_at: string;
+  position?: number;
 }
 
 export type StickerArray = StickerWithCreatedAt[];
